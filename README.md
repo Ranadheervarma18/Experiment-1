@@ -73,7 +73,7 @@ A_v = -g_m R_d
 ## Circuit - 1
 
 ### **Circuit Diagram**
-*![image](https://github.com/user-attachments/assets/7a3cdba1-5f4f-4f8c-b0ed-b4b2caae8b3c)*  
+![image](https://github.com/user-attachments/assets/0dc2fe6a-72bd-4bdf-8584-fae024369d56)
 
 ## Procedure  
 
@@ -88,7 +88,7 @@ A_v = -g_m R_d
   1. Go to **Simulate → Edit Simulation Command**.  
   2. Click on **DC Analysis**, then press **OK**.  
   3. Click on **Run** to obtain the **DC operating point (Vout)**.  
-- **Set the Length as constant** and **determine the Width** such that `ID = 55.5µA`.  
+- **Set the Length as constant** and **determine the Width** such that `ID = 48.33µA`.  
 
 ### **3. Transient Analysis**  
 - Modify the **VGS voltage source** to a **sine wave input** with:  
@@ -127,7 +127,7 @@ P = I \times V
 \]
 
 - **Given:**  
-  - `ID = 55.5µA`  
+  - `ID = 48.33µA`  
   - `VDD = 1.8V`  
 - **Thus:**  
   \[
@@ -138,17 +138,18 @@ P = I \times V
 - **Calculated RD:** `32.4kΩ` *(Used: `22kΩ`)*  
 - **Length:** `180nm`  
 - **Width:** `18µm` *(Found by keeping the length constant)*  
-- **VDS:** `0.467V`  
+- **VDS:** `0.735V`  
 
 ### **Q-Point**
 \[
-Q = (0.467V, 55.55µA)
+Q = (0.735V, 48.33µA)
 \]
 ##  **Results**  
 
 ### 🔹 **1. DC Analysis**  
-Drain Current, Id = 55.55 µA  
-Vout = 0.467 V  
+![image](https://github.com/user-attachments/assets/630e5d48-014f-47b3-be95-da59029de78c)
+Drain Current, Id = 48.33 µA  
+Vout = 0.735V  
 Width = 18 µm for Length = 180 nm '''
 
 ### 🔹 **2. Transient Analysis**  
@@ -157,7 +158,7 @@ There is a 180-degree phase shift between input and output.
 
 ### 🔹 **3. AC Analysis** 
 ![image](https://github.com/user-attachments/assets/14425c78-2fdf-4c1b-90e6-6171c15cc0a1)
-Gain = 20 dB
+
 
 ### 🔹 **Inference**  
 1. The Drain current is directly influenced by the Width of the MOSFET.  
@@ -171,6 +172,8 @@ Gain = 20 dB
 Simulate the DC analysis, Transient, and AC analysis of a CMOS amplifier circuit using LTSpice.
 
 ### 🔹 **Circuit**
+![image](https://github.com/user-attachments/assets/add2aed4-a355-41ac-8a38-d584d3ad0616)
+
 🔹 Procedure
 Design the CMOS amplifier circuit.
 
@@ -212,10 +215,49 @@ Set the Frequency Range from 0.1 Hz to 1 THz.
 Click OK. Determine the gain and frequency response of the circuit.
 
 🔹 Calculation
-ID = 55.5 µA, VDD = 1.8 V
+ID = 48.3 µA, VDD = 1.8 V
 
 Length M1 = 180 nm  
 Width = 190 nm (found by keeping the Length of M1 constant)
 
 Length M2 = 180 nm  
 Width = 449 µm (found by keeping the Length of M2 constant)
+
+##  **Results**
+
+### 🔹 **1. DC Sweep Analysis**  
+![image](https://github.com/user-attachments/assets/918022d1-4709-4471-9276-2f7703513fcd)
+VTC Curve: vtc
+
+The value of Vin is selected as **0.8V** as it is present in the middle of the saturation region of the VTC Curve.
+🔹 2. DC Analysis
+![image](https://github.com/user-attachments/assets/9973aa23-63fd-4f2c-b5f9-dedd5e59c293)
+
+
+Voltage Output: v1
+
+Drain Current, Id =19.55 µA  
+Vout = 1.67 V  
+
+Device Dimensions:  
+Length M1 = 180 nm, Width = 190 nm  
+Length M2 = 180 nm, Width = 449 µm  
+
+🔹 3. Transient Analysis
+![image](https://github.com/user-attachments/assets/08f4324f-87ce-42f0-83b5-99d0b9c07e6c)
+Waveform Output: v2
+There is a **180-degree phase shift** between the input and output signals.
+
+🔹 4. AC Analysis
+![image](https://github.com/user-attachments/assets/e79d2176-ee55-47ce-ba9e-d79e616f9165)
+Frequency Response: v3
+
+## Inference
+
+1. The width of the MOSFET directly affects the drain current.  
+2. By changing the dimensions of the MOSFET:  
+   - **M1 (PMOS):** Varying the width causes only a slight change in drain current.  
+   - **M2 (NMOS):** Increasing the width significantly increases the drain current.  
+3. A larger MOSFET width results in a higher gain.  
+4. There is a **180-degree phase shift** between the input and output waveforms.  
+
