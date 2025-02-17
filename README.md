@@ -261,3 +261,4 @@ Frequency Response: v3
 3. A larger MOSFET width results in a higher gain.  
 4. There is a **180-degree phase shift** between the input and output waveforms.  
 
+
